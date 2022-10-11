@@ -1,0 +1,9 @@
+.root {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: BlueViolet;
+  text-transform: capitalize;
+  border: 1px solid BlueViolet;
+  padding: 0.5rem;
+}

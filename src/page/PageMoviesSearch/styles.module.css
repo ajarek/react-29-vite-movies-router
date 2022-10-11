@@ -1,1 +1,32 @@
-.root {}
+.root {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 1rem;
+  gap: 0.5rem;
+  place-items: center;
+  padding: 0.5rem;
+  
+}
+.wrapper:hover{
+ transform: scale(1.01);
+}
+.wrapper{
+  width: 100%;
+  min-height: 416px;
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.4);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.wrapper img{
+  width: 100%;
+  min-height: 379px;
+  object-fit: cover;
+}
+.wrapper p{
+  min-height: 39px;
+  background-color: #FF3D00;
+  color: aliceblue;
+}

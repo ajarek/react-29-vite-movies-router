@@ -1,1 +1,22 @@
-.root {}
+.root {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.5rem;
+  margin-top: 5vh;
+  place-items: center;
+  padding: 0.5rem;
+}
+.wrapper{
+  width: 100%;
+  min-height: 416px;
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.4);
+}
+.wrapper img{
+  width: 100%;
+  min-height: 379px;
+  object-fit: cover;
+}
+.wrapper p{
+  min-height: 39px;
+}

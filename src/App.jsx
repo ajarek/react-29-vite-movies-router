@@ -4,37 +4,46 @@ import { PageHome } from "./page/PageHome/PageHome"
 import { PageMoviesSearch } from "./page/PageMoviesSearch/PageMoviesSearch"
 import { PageLogin } from "./page/PageLogin/PageLogin"
 import { PageLogout } from "./page/PageLogout/PageLogout"
+import { Page404 } from "./page/Page404/Page404"
 import { Navigation } from "./components/Navigation/Navigation"
-import { useState } from "react"
-import { useUser } from './contexts/UserContext'
+import { useUser } from "./contexts/UserContext"
 function App() {
-  
   const { isUserLoggedIn } = useUser()
- console.log(isUserLoggedIn);
-   
+
+
   return (
     <div className='App'>
       <Navigation />
       <Routes>
-        <Route
-          path='/'
-          element={<PageHome />}
-        />
-        <Route
-          path='/movie/search'
-          element={<PageMoviesSearch />}
-        />
-        <Route
-          path='/login'
-          element={<PageLogin  />}
-        />
-        <Route
-          path='/logout'
-          element={<PageLogout  />}
-          >
+      {
+          !isUserLoggedIn ?
+          <Route
+            path='*'
+            element={<PageLogin />}
+          />
+          :
+          <>
+            <Route
+              path='/'
+              element={<PageHome />}
+            />
+            <Route
+              path='/movie/search'
+              element={<PageMoviesSearch />}
+            />
+
+            <Route
+              path='/logout'
+              element={<PageLogout />}
+            />
           
-          </Route>
-        
+          <Route
+              path='*'
+              element={<Page404 />}
+            />
+            
+            </>
+}
       </Routes>
     </div>
   )
