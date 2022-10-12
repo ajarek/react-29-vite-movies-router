@@ -30,8 +30,12 @@ function App() {
             <Route
               path='/movie/search'
               element={<PageMoviesSearch />}
-            />
-
+            >
+               <Route
+                    path={':searchPhrase'}
+                    element={<PageMoviesSearch />}
+                  />
+            </Route>
             <Route
               path='/logout'
               element={<PageLogout />}

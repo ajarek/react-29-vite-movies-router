@@ -4,12 +4,22 @@ import { useFetch } from '../../api/useFetch'
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage'
 import { Loading } from '../../components/Loading/Loading'
 import { FullPageLayout } from '../../components/FullPageLayout/FullPageLayout'
+import { useParams, useNavigate} from 'react-router-dom'
+import { useDebounce } from 'react-use'
 
 export const PageMoviesSearch = (props) => {
   const { className, ...otherProps } = props
+ let {searchPhrase}=useParams()
+ const navigate = useNavigate()
+  const [tmpSearchPhrase, setTmpSearchPhrase] = useState(searchPhrase ||'')
+  const [, cancel] = useDebounce(() => {
+    // that is relative path so we only passes searchPhrase URL param
+    if (searchPhrase !== tmpSearchPhrase) navigate(tmpSearchPhrase)
+  }, 1000, [tmpSearchPhrase])
 
-  const [tmpSearchPhrase, setTmpSearchPhrase] = React.useState('')
-
+  React.useEffect(() => {
+    return () => cancel()
+  }, [cancel])
   const url = `https://www.omdbapi.com/?apikey=${
     import.meta.env.VITE_KEY_OMDB
   }&type=movie&s=${tmpSearchPhrase}`
