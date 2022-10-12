@@ -26,12 +26,12 @@ export const PageMoviesSearch = (props) => {
   const { data, pending, error } = useFetch(url)
 
   return (
-    <div style={{ marginTop: '10vh' }}>
+    <div className={classes.general}>
       <h3> PageMoviesSearch</h3>
       <input
         value={tmpSearchPhrase}
         onChange={(e) => setTmpSearchPhrase(e.target.value.replaceAll('/', ''))}
-        // placeholder={'title...'}
+        placeholder={'title...'}
         style={{ fontSize: '1.5rem', padding: '0 0.5rem' }}
       />
 

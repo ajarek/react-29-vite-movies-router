@@ -1,3 +1,12 @@
+.general{
+  margin-top: 10vh;
+}
+.general input{
+outline: 1px solid #b02b02;
+border-radius: 0.2rem;
+border: none;
+margin-top: 0.3rem;
+}
 .root {
   width: 100%;
   height: 100%;

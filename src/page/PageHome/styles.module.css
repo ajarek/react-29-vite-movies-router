@@ -19,4 +19,6 @@
 }
 .wrapper p{
   min-height: 39px;
+  background-color: #FF3D00;
+  color: aliceblue;
 }

@@ -1,6 +1,9 @@
 import React from 'react'
 import { useFetch} from '../../api/useFetch'
 import classes from './styles.module.css'
+import { FullPageLayout } from '../../components/FullPageLayout/FullPageLayout'
+import { Loading } from '../../components/Loading/Loading'
+import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage'
 
 export const PageHome = (props) => {
   const {
@@ -8,11 +11,17 @@ export const PageHome = (props) => {
     ...otherProps
   } = props
  
- const url=`https://www.omdbapi.com/?apikey=${import.meta.env.VITE_KEY_OMDB}&type=movie&s=star wars&page=1`
-  const{data}=useFetch(url)
+ const url=`https://www.omdbapi.com/?apikey=${import.meta.env.VITE_KEY_OMDB}&type=movie&s=batman&page=1`
+  const{ data, pending, error}=useFetch(url)
  
   return (
     <>
+     {error ? <ErrorMessage>{error}</ErrorMessage> : null}
+        {pending ? (
+          <FullPageLayout>
+            <Loading />
+          </FullPageLayout>
+        ) : null}
      <h1 className='h1'>PageHome</h1>
     <div
       className={`${classes.root}${className ? ` ${className}` : ''}`}
