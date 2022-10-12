@@ -6,11 +6,12 @@
   margin-top: 5vh;
   place-items: center;
   padding: 0.5rem;
+  margin-top: 4rem;
 }
 .wrapper{
   width: 100%;
   min-height: 416px;
-  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.4);
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.8);
 }
 .wrapper img{
   width: 100%;
@@ -19,6 +20,6 @@
 }
 .wrapper p{
   min-height: 39px;
-  background-color: #FF3D00;
+  
   color: aliceblue;
 }

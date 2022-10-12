@@ -22,7 +22,7 @@ export const PageHome = (props) => {
             <Loading />
           </FullPageLayout>
         ) : null}
-     <h1 className='h1'>PageHome</h1>
+    
     <div
       className={`${classes.root}${className ? ` ${className}` : ''}`}
       {...otherProps}

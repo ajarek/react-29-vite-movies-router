@@ -4,17 +4,21 @@ import { useFetch } from '../../api/useFetch'
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage'
 import { Loading } from '../../components/Loading/Loading'
 import { FullPageLayout } from '../../components/FullPageLayout/FullPageLayout'
-import { useParams, useNavigate} from 'react-router-dom'
+import { useParams, useNavigate, NavLink } from 'react-router-dom'
 import { useDebounce } from 'react-use'
 
 export const PageMoviesSearch = (props) => {
   const { className, ...otherProps } = props
- let {searchPhrase}=useParams()
- const navigate = useNavigate()
-  const [tmpSearchPhrase, setTmpSearchPhrase] = useState(searchPhrase ||'')
-  const [, cancel] = useDebounce(() => {
-    if (searchPhrase !== tmpSearchPhrase) navigate(tmpSearchPhrase)
-  }, 1000, [tmpSearchPhrase])
+  let { searchPhrase } = useParams()
+  const navigate = useNavigate()
+  const [tmpSearchPhrase, setTmpSearchPhrase] = useState(searchPhrase || '')
+  const [, cancel] = useDebounce(
+    () => {
+      if (searchPhrase !== tmpSearchPhrase) navigate(tmpSearchPhrase)
+    },
+    1000,
+    [tmpSearchPhrase]
+  )
 
   React.useEffect(() => {
     return () => cancel()
@@ -47,13 +51,26 @@ export const PageMoviesSearch = (props) => {
         ) : null}
         {data &&
           data.Search?.map((el) => (
-            <div className={classes.wrapper} key={el.imdbID}>
-              <img
-                src={el.Poster!=='N/A'?el.Poster:'https://png.pngtree.com/element_our/20190528/ourmid/pngtree-no-video-icon-download-image_1147177.jpg'}
-                alt='picture'
-              />
-              <p>{el.Title}</p>
-            </div>
+            <NavLink
+              className={classes.link}
+              to={`/movies/${el.imdbID}`}
+              key={el.imdbID}
+            >
+              <div
+                className={classes.wrapper}
+                
+              >
+                <img
+                  src={
+                    el.Poster !== 'N/A'
+                      ? el.Poster
+                      : 'https://png.pngtree.com/element_our/20190528/ourmid/pngtree-no-video-icon-download-image_1147177.jpg'
+                  }
+                  alt='picture'
+                />
+                <p>{el.Title}</p>
+              </div>
+            </NavLink>
           ))}
       </div>
     </div>
