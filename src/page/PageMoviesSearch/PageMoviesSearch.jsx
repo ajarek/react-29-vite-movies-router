@@ -13,7 +13,6 @@ export const PageMoviesSearch = (props) => {
  const navigate = useNavigate()
   const [tmpSearchPhrase, setTmpSearchPhrase] = useState(searchPhrase ||'')
   const [, cancel] = useDebounce(() => {
-    // that is relative path so we only passes searchPhrase URL param
     if (searchPhrase !== tmpSearchPhrase) navigate(tmpSearchPhrase)
   }, 1000, [tmpSearchPhrase])
 
