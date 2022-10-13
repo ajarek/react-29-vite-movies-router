@@ -56,10 +56,7 @@ export const PageMoviesSearch = (props) => {
               to={`/movies/${el.imdbID}`}
               key={el.imdbID}
             >
-              <div
-                className={classes.wrapper}
-                
-              >
+              <div className={classes.wrapper}>
                 <img
                   src={
                     el.Poster !== 'N/A'

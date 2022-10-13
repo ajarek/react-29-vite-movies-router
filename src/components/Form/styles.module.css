@@ -1,0 +1,9 @@
+.form{
+  margin: 0 auto;
+  width: 320px;
+  border: solid white;
+}
+.form input{
+  width: 100%;
+  height: 40px;
+}
